@@ -7,7 +7,7 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 # Replace this with your real front-end origin(s)
 ALLOWED_ORIGINS = [
-    "https://your-site.example.com",  # e.g., https://vero.dotswitch.space
+    "https://eyepatch-3097.github.io/d2c-gamification/",  # e.g., https://vero.dotswitch.space
     "http://localhost:5500",          # if you preview locally
     "https://*.githubpreview.dev",    # helpful for Codespaces previews
 ]
