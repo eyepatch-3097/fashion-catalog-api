@@ -27,7 +27,12 @@ class StylePayload(BaseModel):
     persona: str
     word: str | None = ""
 
+@app.get("/health")
+def health():
+    return {"ok": True}
+
 @app.post("/api/fashion-catalog")
+@app.post("/api/fashion-catalog/")
 def fashion_catalog(p: StylePayload):
     if not OPENAI_API_KEY:
         raise HTTPException(status_code=500, detail="Server missing OPENAI_API_KEY")
@@ -47,12 +52,11 @@ def fashion_catalog(p: StylePayload):
             "https://api.openai.com/v1/chat/completions",
             headers={"Authorization": f"Bearer {OPENAI_API_KEY}"},
             json={
-                "model": "gpt-4o-mini",
+                "model": "gpt-5-nano",
                 "messages": [
                     {"role": "system", "content": "Return only a single https URL. No commentary."},
                     {"role": "user", "content": prompt.strip()},
                 ],
-                "temperature": 0.6,
             },
             timeout=15
         )
