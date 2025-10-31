@@ -58,7 +58,7 @@ def fashion_catalog(p: StylePayload):
         r.raise_for_status()
         url = r.json()["choices"][0]["message"]["content"].strip().split()[0]
         if not url.startswith("http"):
-            url = "https://www.hm.com/en_in/men/shop-by-product/shirts/"
+            url = "https://www2.hm.com/en_in/men/shop-by-product/shirts.html"
         return {"url": url}
     except Exception:
         raise HTTPException(status_code=502, detail="OpenAI upstream failed")
